@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 
 class Create extends React.Component {
   constructor(props){
@@ -30,6 +31,15 @@ class Create extends React.Component {
     alert(this.state.Title+ "      " + this.state.Year 
     +"       "+ this.state.Poster);
     e.preventDefault();
+    const movieObject = {
+      title: this.state.Title,
+      year:this.state.Year,
+      poster:this.state.Poster
+    }
+    Axios.post('http://localhost:4000/api/movies', movieObject).then().catch();
+   
+   
+
     this.setState({Title:'',
                   Year:'',
                 Poster:''});
